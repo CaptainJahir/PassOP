@@ -113,8 +113,8 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200">
-              <Passdesign url = "https://www.youtube.com/watch?v=cZzxKoDr3Mc" username ="Admin" passkey = "root"/>
-              <Passdesign url = "https://www.youtube.com/signup?/" username ="Admin" passkey = "root"/>
+              <Passdesign url = "https://www.youtube.com/watch?v=cZzxKoDr3Mc" username ="Admin1" passkey = "root1"/>
+              <Passdesign url = "https://www.youtube.com/signup?/" username ="Admin2" passkey = "root2"/>
             </div>
           </div>
         </div>
