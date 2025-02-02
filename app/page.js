@@ -1,101 +1,124 @@
+"use client"
 import Image from "next/image";
+import Passdesign from "@/components/passDesign";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [img, setimg] = useState("/assets/show.png")
+  const [inptype, setinptype] = useState("password")
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const toggleBtn = () => {
+    if (img === "/assets/show.png") {
+      setimg("/assets/hide.png")
+      setinptype("text")
+    }
+    else{
+      setimg("/assets/show.png")
+      setinptype("password")
+    }
+  }
+  
+  return (
+    <div className="bg-green-100 w-[100vw] h-[100vh]">
+      {/* Navbar Goes Here */}
+      <div className="bg-slate-700 w-full h-[8%] flex items-center justify-between px-10">
+        {/* Logo */}
+        <div className="font-bold text-white flex items-center cursor-pointer">
+          <span className="text-green-500 text-2xl">&lt;</span>
+          <span className="text-lg">
+            Pass
+            <span className="text-lg text-green-500">OP</span>
+          </span>
+          <span className="text-green-500 text-lg">/&gt;</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Github Link */}
+        <div className="flex items-center justify-around w-28 text-white font-semibold cursor-pointer rounded-full px-2 py-1 border border-transparent hover:border-white">
+          <Image src="/assets/github.ico" width={28} height={28} alt="github link" />
+          <span>GitHub</span>
+        </div>
+      </div>
+
+      {/* Body Goes here */}
+
+      <div>
+        {/* here goes the logo and its tag line */}
+        <div className="flex flex-col justify-center items-center my-6">
+          {/* here goes the logo */}
+          <div>
+            <div className="font-bold text-black flex items-center cursor-pointer">
+              <span className="text-green-600 text-5xl">&lt;</span>
+              <span className="text-4xl">
+                Pass
+                <span className="text-4xl text-green-600">OP</span>
+              </span>
+              <span className="text-green-600 text-4xl">/&gt;</span>
+            </div>
+          </div>
+          {/* here goes the tag line */}
+          <span>
+            Your Trusted Password Vault
+          </span>
+        </div>
+
+        {/* Here Goes the input tags */}
+
+        <div className="flex flex-col justify-center">
+          <input type="text" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10" />
+          <div className="flex gap-6 mx-auto w-2/4 mt-6">
+            <input type="text" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2" />
+            {/* password input tag */}
+            <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4">
+            <input type={inptype} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
+            {/* here goes the hide show img */}
+              <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
+            </div>
+          </div>
+          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6">
+            Save
+            <span>
+              <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem]"/>
+            </span>
+          </button>
+        </div>
+
+        {/* Here gos the credential details */}
+
+        <div className="w-[80%] mx-auto">
+          {/* Heading */}
+          <span className="font-bold text-xl">
+            Your Passwords
+          </span>
+
+          {/* Here Goes the Credits */}
+
+          <div className="w-full mt-3">
+            {/* Here Goes the headings */}
+            <div className="bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[3fr_1fr_1fr_.6fr] gap-4">
+              <span className="flex justify-center items-center font-semibold text-md text-white">
+                Site
+              </span>
+
+              <span className="flex justify-center items-center font-semibold text-md text-white">
+                Username
+              </span>
+
+              <span className="flex justify-center items-center font-semibold text-md text-white">
+                Password
+              </span>
+
+              <span className="flex justify-center items-center font-semibold text-md text-white">
+                Actions
+              </span>
+            </div>
+            {/* Here Goes the Credentials Passwords */}
+            <div className="bg-green-200 border border-green-200">
+              <Passdesign url = "https://www.youtube.com/watch?v=cZzxKoDr3Mc" username ="Admin" passkey = "root"/>
+              <Passdesign url = "https://www.youtube.com/signup?/" username ="Admin" passkey = "root"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
