@@ -37,7 +37,7 @@ const Passdesign = (props) => {
       {/* This is a Main Container */}
       <div className='grid grid-cols-[1fr_40px]'>
       <Link href={props.url} target='_blank'>
-        <div className="flex justify-center items-center rounded-full font-semibold cursor-pointer  hover:bg-[rgb(181,255,181)]" ref={urlRef}>      
+        <div className="flex justify-center items-center rounded-full font-semibold cursor-pointer hover:bg-[rgb(181,255,181)]" ref={urlRef}>      
           {props.url}
         </div>
       </Link>

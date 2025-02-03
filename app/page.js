@@ -1,11 +1,51 @@
 "use client"
 import Image from "next/image";
 import Passdesign from "@/components/passDesign";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export default function Home() {
-  const [img, setimg] = useState("/assets/show.png")
-  const [inptype, setinptype] = useState("password")
+  const [img, setimg] = useState("/assets/show.png");
+  const [inptype, setinptype] = useState("password");
+  const webnameRef = useRef();
+  const usernameRef = useRef();
+  const passRef = useRef();
+  // This array is for final task storing 
+
+  const [credArray, setcredArray] = useState([{
+    website : "www.youtue.com/",
+    user : "admin1",
+    pass : "root1"
+  },
+  {
+    website : "https://chatgpt.com/",
+    user : "admin2",
+    pass : "root2"
+  }]);
+
+
+  // this is for input data
+
+  const handleSave = () => {
+    const webname = webnameRef.current.value;
+    const username = usernameRef.current.value;
+    const password = passRef.current.value;
+    // this data is in the form of JSON
+    const inputData = {
+      website: webname ,
+      user: username , 
+      pass: password
+    }
+    if(inputData.web !== "" && inputData.user !== "" && inputData.pass !== ""){
+      setcredArray(credArray => [...credArray , inputData])
+      webnameRef.current.value = "";
+      usernameRef.current.value = ""
+      passRef.current.value = "";
+    }
+    else{
+      alert("The input fieds must not be empty")
+    }
+  }
 
   const toggleBtn = () => {
     if (img === "/assets/show.png") {
@@ -64,17 +104,18 @@ export default function Home() {
         {/* Here Goes the input tags */}
 
         <div className="flex flex-col justify-center">
-          <input type="text" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10" />
+          {/* Website name */}
+          <input type="text" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10" ref={webnameRef}/>
           <div className="flex gap-6 mx-auto w-2/4 mt-6">
-            <input type="text" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2" />
+            <input type="text" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2" ref={usernameRef} />
             {/* password input tag */}
             <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4">
-            <input type={inptype} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
+            <input type={inptype} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" ref={passRef}/>
             {/* here goes the hide show img */}
               <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
             </div>
           </div>
-          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6">
+          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6" onClick={() => {handleSave()}}>
             Save
             <span>
               <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem]"/>
@@ -113,8 +154,9 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200">
-              <Passdesign url = "https://www.youtube.com/watch?v=cZzxKoDr3Mc" username ="Admin1" passkey = "root1"/>
-              <Passdesign url = "https://www.youtube.com/signup?/" username ="Admin2" passkey = "root2"/>
+              {credArray.map((item) => {
+                return <Passdesign url = {item.website} username ={item.user} passkey = {item.pass} key={uuidv4()} />;
+              })}      
             </div>
           </div>
         </div>
