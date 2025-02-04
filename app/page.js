@@ -3,6 +3,8 @@ import Image from "next/image";
 import Passdesign from "@/components/passDesign";
 import { useRef, useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector, useDispatch } from 'react-redux'
+import { removeitem, additem } from '@/redux/slice/ArraySlice'
 
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
@@ -10,18 +12,22 @@ export default function Home() {
   const webnameRef = useRef();
   const usernameRef = useRef();
   const passRef = useRef();
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.CredentialArray.items); 
   // This array is for final task storing 
 
-  const [credArray, setcredArray] = useState([{
-    website : "www.youtue.com/",
-    user : "admin1",
-    pass : "root1"
-  },
-  {
-    website : "https://chatgpt.com/",
-    user : "admin2",
-    pass : "root2"
-  }]);
+  // const [credArray, setcredArray] = useState([{
+  //   website : "www.youtue.com/",
+  //   user : "admin1",
+  //   pass : "root1"
+  // },
+  // {
+  //   website : "https://chatgpt.com/",
+  //   user : "admin2",
+  //   pass : "root2"
+  // }]);
+
+  // this array has no use; now i'm using redux
 
 
   // this is for input data
@@ -37,15 +43,21 @@ export default function Home() {
       pass: password
     }
     if(inputData.web !== "" && inputData.user !== "" && inputData.pass !== ""){
-      setcredArray(credArray => [...credArray , inputData])
+      dispatch(additem(inputData))
       webnameRef.current.value = "";
       usernameRef.current.value = ""
       passRef.current.value = "";
+      
     }
     else{
       alert("The input fieds must not be empty")
     }
   }
+
+  const showcred = () => {
+    console.log(items)
+  }
+  
 
   const toggleBtn = () => {
     if (img === "/assets/show.png") {
@@ -121,6 +133,11 @@ export default function Home() {
               <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem]"/>
             </span>
           </button>
+
+          {/* Security risk remove after development */}
+          <button onClick={() => showcred()}>
+            show array
+          </button>
         </div>
 
         {/* Here gos the credential details */}
@@ -154,7 +171,7 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200">
-              {credArray.map((item) => {
+              {items.map((item) => {
                 return <Passdesign url = {item.website} username ={item.user} passkey = {item.pass} key={uuidv4()} />;
               })}      
             </div>

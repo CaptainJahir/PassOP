@@ -1,3 +1,3 @@
-password input design (text align center)
-use redux store 
+edit and delete redux
+local storage saving
 Make a toster

@@ -31,6 +31,23 @@ const Passdesign = (props) => {
     savefunction(pass)
   }
 
+  const handleDelete = () => {
+    console.log("delete accessed");
+    console.log({
+      // if this won't work use ref 
+      // it's actually working so no need of ref hook
+      website: props.url,
+      username: props.username,
+      password: props.passkey
+    })
+  }
+
+  const handleEdit = () => {
+    console.log("Edit accessed");
+  }
+  
+  
+
   return (
     <div className="py-1 px-2 grid grid-cols-[3fr_1fr_1fr_.6fr] gap-4 mb-2 bg-green-200">
       {/* Website URL */}
@@ -72,11 +89,11 @@ const Passdesign = (props) => {
         {/* Edit and Delete Option */}
       <div className="flex justify-center gap-3 items-center hover:bg-[rgb(181,255,181)]">
         <span>
-          <Image src="/assets/Edit.png" alt="revel" width={28} height={28} className="cursor-pointer" />
+          <Image src="/assets/Edit.png" alt="revel" width={28} height={28} className="cursor-pointer" onClick={() => {handleEdit()}}/>
         </span>
 
         <span>
-          <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer" />
+          <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer" onClick={() => {handleDelete()}}/>
         </span>
        
       </div>
