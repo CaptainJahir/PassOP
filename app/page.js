@@ -1,10 +1,10 @@
 "use client"
 import Image from "next/image";
 import Passdesign from "@/components/passDesign";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux'
-import { removeitem, additem } from '@/redux/slice/ArraySlice'
+import { additem } from '@/redux/slice/ArraySlice'
 
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
@@ -14,6 +14,23 @@ export default function Home() {
   const passRef = useRef();
   const dispatch = useDispatch();
   const items = useSelector((state) => state.CredentialArray.items);
+  const edititems = useSelector(state => state.Editarray.value);
+  
+  const editFunction = () => {
+    if (edititems.length !== 0) {
+      webnameRef.current.value = edititems[0].website
+      usernameRef.current.value = edititems[0].user
+      passRef.current.value = edititems[0].pass
+    }
+  }
+
+  useEffect(() => {
+    editFunction();
+  }, [edititems])
+  
+  
+
+  
 
   const handleSave = () => {
     const webname = webnameRef.current.value;

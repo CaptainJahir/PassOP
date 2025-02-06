@@ -2,8 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRef , useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { removeitem } from '@/redux/slice/ArraySlice'
+import { addEdit, removeall } from "@/redux/slice/EditSlice";
 
 
 const Passdesign = (props) => {
@@ -12,6 +13,8 @@ const Passdesign = (props) => {
   const passRef = useRef();
   const [pass, setpass] = useState(props.passkey);
   const dispatch = useDispatch();
+  const items = useSelector((state) => state.CredentialArray.items);
+  const edititems = useSelector(state => state.Editarray.value);
 
   const savefunction = async (source) => {
     try {
@@ -39,7 +42,20 @@ const Passdesign = (props) => {
 
   const handleEdit = () => {
     console.log("Edit accessed");
+    if (edititems.length === 0) {
+      dispatch(addEdit(items[props.slno-1]));
+      dispatch(removeitem(props.slno-1));
+    }else{
+      dispatch(removeall())
+      dispatch(addEdit(items[props.slno-1]));
+      dispatch(removeitem(props.slno-1));
+    }
   }
+
+  const details = () => {
+    console.log(edititems);
+  }
+  
   
   
 
@@ -93,6 +109,10 @@ const Passdesign = (props) => {
 
         <span>
           <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer" onClick={() => {handleDelete()}}/>
+        </span>
+
+        <span onClick={() => {details()}}>
+          det
         </span>
        
       </div>
