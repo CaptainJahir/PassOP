@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Passdesign from "@/components/passDesign";
 import { useRef, useState, useEffect } from "react";
-import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux'
 import { additem } from '@/redux/slice/ArraySlice'
 
@@ -165,7 +164,7 @@ export default function Home() {
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200">
               {items.map((item , index) => {
-                return <Passdesign url={item.website} username={item.user} passkey={item.pass} key={uuidv4()} slno = {index+1}/>;
+                return <Passdesign url={item.website} username={item.user} passkey={item.pass} key={index} slno = {index+1}/>;
               })}      
             </div>
           </div>
