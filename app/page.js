@@ -28,9 +28,6 @@ export default function Home() {
     editFunction();
   }, [edititems])
   
-  
-
-  
 
   const handleSave = () => {
     const webname = webnameRef.current.value;
@@ -52,10 +49,6 @@ export default function Home() {
     else{
       alert("The input fieds must not be empty")
     }
-  }
-
-  const showcred = () => {
-    console.log(items)
   }
   
 
@@ -132,11 +125,6 @@ export default function Home() {
             <span>
               <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem]"/>
             </span>
-          </button>
-
-          {/* Security risk remove after development */}
-          <button onClick={() => showcred()}>
-            show array
           </button>
         </div>
 

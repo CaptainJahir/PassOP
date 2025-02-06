@@ -41,7 +41,6 @@ const Passdesign = (props) => {
   }
 
   const handleEdit = () => {
-    console.log("Edit accessed");
     if (edititems.length === 0) {
       dispatch(addEdit(items[props.slno-1]));
       dispatch(removeitem(props.slno-1));
@@ -50,10 +49,6 @@ const Passdesign = (props) => {
       dispatch(addEdit(items[props.slno-1]));
       dispatch(removeitem(props.slno-1));
     }
-  }
-
-  const details = () => {
-    console.log(edititems);
   }
   
   
@@ -109,10 +104,6 @@ const Passdesign = (props) => {
 
         <span>
           <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer" onClick={() => {handleDelete()}}/>
-        </span>
-
-        <span onClick={() => {details()}}>
-          det
         </span>
        
       </div>
