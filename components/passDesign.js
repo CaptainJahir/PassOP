@@ -49,7 +49,10 @@ const Passdesign = (props) => {
   
 
   return (
-    <div className="py-1 px-2 grid grid-cols-[3fr_1fr_1fr_.6fr] gap-4 mb-2 bg-green-200">
+    <div className="py-1 px-2 grid grid-cols-[40px_3fr_1fr_1fr_.6fr] gap-4 mb-2 bg-green-200">
+      <span className='flex justify-center items-center cursor-pointer font-semibold rounded-full hover:bg-[rgb(181,255,181)]'>
+        {props.slno}
+      </span>
       {/* Website URL */}
       {/* This is a Main Container */}
       <div className='grid grid-cols-[1fr_40px]'>

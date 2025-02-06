@@ -152,7 +152,12 @@ export default function Home() {
 
           <div className="w-full mt-3">
             {/* Here Goes the headings */}
-            <div className="bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[3fr_1fr_1fr_.6fr] gap-4">
+            <div className="bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[40px_3fr_1fr_1fr_.6fr] gap-4">
+
+              <span className="flex justify-center items-center font-semibold text-md text-white">
+                s.no
+              </span>
+
               <span className="flex justify-center items-center font-semibold text-md text-white">
                 Site
               </span>
@@ -171,8 +176,8 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200">
-              {items.map((item) => {
-                return <Passdesign url = {item.website} username ={item.user} passkey = {item.pass} key={uuidv4()} />;
+              {items.map((item , index) => {
+                return <Passdesign url={item.website} username={item.user} passkey={item.pass} key={uuidv4()} slno = {index+1}/>;
               })}      
             </div>
           </div>
