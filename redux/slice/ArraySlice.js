@@ -12,7 +12,7 @@ export const credSlice = createSlice({
       state.items.push(action.payload);
     },
     removeitem: (state , action) => {
-      state.items = state.items.filter((item) => item !== action.payload)
+      state.items.splice(action.payload,1);
     },
   },
 })

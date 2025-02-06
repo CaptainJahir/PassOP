@@ -13,24 +13,7 @@ export default function Home() {
   const usernameRef = useRef();
   const passRef = useRef();
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.CredentialArray.items); 
-  // This array is for final task storing 
-
-  // const [credArray, setcredArray] = useState([{
-  //   website : "www.youtue.com/",
-  //   user : "admin1",
-  //   pass : "root1"
-  // },
-  // {
-  //   website : "https://chatgpt.com/",
-  //   user : "admin2",
-  //   pass : "root2"
-  // }]);
-
-  // this array has no use; now i'm using redux
-
-
-  // this is for input data
+  const items = useSelector((state) => state.CredentialArray.items);
 
   const handleSave = () => {
     const webname = webnameRef.current.value;

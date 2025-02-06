@@ -1,15 +1,17 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react'
-import { useState } from 'react'
+import { useRef , useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { removeitem } from '@/redux/slice/ArraySlice'
 
 
 const Passdesign = (props) => {
-  const urlRef = useRef()
-  const userRef = useRef()
-  const passRef = useRef()
-  const [pass, setpass] = useState(props.passkey)
+  const urlRef = useRef();
+  const userRef = useRef();
+  const passRef = useRef();
+  const [pass, setpass] = useState(props.passkey);
+  const dispatch = useDispatch();
 
   const savefunction = async (source) => {
     try {
@@ -32,14 +34,7 @@ const Passdesign = (props) => {
   }
 
   const handleDelete = () => {
-    console.log("delete accessed");
-    console.log({
-      // if this won't work use ref 
-      // it's actually working so no need of ref hook
-      website: props.url,
-      username: props.username,
-      password: props.passkey
-    })
+    dispatch(removeitem(props.slno-1));
   }
 
   const handleEdit = () => {
@@ -51,6 +46,7 @@ const Passdesign = (props) => {
   return (
     <div className="py-1 px-2 grid grid-cols-[40px_3fr_1fr_1fr_.6fr] gap-4 mb-2 bg-green-200">
       <span className='flex justify-center items-center cursor-pointer font-semibold rounded-full hover:bg-[rgb(181,255,181)]'>
+        {/* here props serial number starts from 1,2,3... not from 0,1,2,3... mind it */}
         {props.slno}
       </span>
       {/* Website URL */}
