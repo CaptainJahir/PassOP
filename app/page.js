@@ -67,28 +67,9 @@ export default function Home() {
   }
   
   return (
-    <div className="bg-green-100 w-[100vw] h-[100vh]">
-      
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover pauseOnFocusLoss draggable theme="colored"/>
-      
-      {/* Navbar Goes Here */}
-      <div className="bg-slate-700 w-full h-[8%] flex items-center justify-between px-10">
-        {/* Logo */}
-        <div className="font-bold text-white flex items-center cursor-pointer">
-          <span className="text-green-500 text-2xl">&lt;</span>
-          <span className="text-lg">
-            Pass
-            <span className="text-lg text-green-500">OP</span>
-          </span>
-          <span className="text-green-500 text-lg">/&gt;</span>
-        </div>
+    <div className="bg-green-100 w-[100vw] overflow-x-hidden">
 
-        {/* Github Link */}
-        <div className="flex items-center justify-around w-28 text-white font-semibold cursor-pointer rounded-full px-2 py-1 border border-transparent hover:border-white">
-          <Image src="/assets/github.ico" width={28} height={28} alt="github link" />
-          <span>GitHub</span>
-        </div>
-      </div>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover pauseOnFocusLoss draggable theme="colored"/>
 
       {/* Body Goes here */}
 
