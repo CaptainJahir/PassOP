@@ -14,6 +14,23 @@ export default function Home() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.CredentialArray.items);
   const edititems = useSelector(state => state.Editarray.value);
+  const [firstRender, setFirstRender] = useState(true)
+
+  // local storage setup
+  // to avoid emptying local storage before retriving data
+    if (firstRender) {
+      setFirstRender(false);
+    }
+
+  // after second render updating the data
+  useEffect(() => {
+  if (firstRender === false) {
+      console.log("second render");
+      localStorage.setItem('creds' , JSON.stringify(items));
+    }
+  }, [items])
+    
+  
   
   const editFunction = () => {
     if (edititems.length !== 0) {
@@ -43,7 +60,7 @@ export default function Home() {
       webnameRef.current.value = "";
       usernameRef.current.value = ""
       passRef.current.value = "";
-      
+
     }
     else{
       alert("The input fieds must not be empty")

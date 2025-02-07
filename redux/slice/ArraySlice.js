@@ -1,7 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const data = localStorage.getItem('creds');
+const localStorageitems = () => {
+  if (data != null) {
+    return JSON.parse(data);
+ }else{
+    return [];
+ }
+}
 const initialState = {
-  items: [],
+  items: localStorageitems(),
 }
 
 export const credSlice = createSlice({
