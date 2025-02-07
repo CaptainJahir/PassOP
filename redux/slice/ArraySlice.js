@@ -1,15 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const data = localStorage.getItem('creds');
-const localStorageitems = () => {
-  if (data != null) {
-    return JSON.parse(data);
- }else{
-    return [];
- }
-}
 const initialState = {
-  items: localStorageitems(),
+  items: []
 }
 
 export const credSlice = createSlice({
@@ -25,7 +17,6 @@ export const credSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { additem, removeitem } = credSlice.actions
 
 export default credSlice.reducer
