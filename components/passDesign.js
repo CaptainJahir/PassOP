@@ -5,6 +5,7 @@ import { useRef , useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeitem } from '@/redux/slice/ArraySlice'
 import { addEdit, removeall } from "@/redux/slice/EditSlice";
+import { toast } from 'react-toastify'
 
 
 const Passdesign = (props) => {
@@ -19,25 +20,28 @@ const Passdesign = (props) => {
   const savefunction = async (source) => {
     try {
       await navigator.clipboard.writeText(source)
-      alert("Copied Sucessfully")
     } catch (error) {
-      alert("Copy Failed")
+      toast.error("Copy Failed")
     }
   }
   const copyurl = () => {
     savefunction(urlRef.current.innerText)
+    toast.info("Copied Url Sucessfully")
   }
 
   const copyuser = async () => {
     savefunction(userRef.current.innerText)
+    toast.info("Copied User Sucessfully")
   }
 
   const copypass = async () => {
     savefunction(pass)
+    toast.info("Copied Password Sucessfully")
   }
 
   const handleDelete = () => {
     dispatch(removeitem(props.slno-1));
+    toast.success("Deleted Sucessfully");
   }
 
   const handleEdit = () => {
@@ -49,6 +53,7 @@ const Passdesign = (props) => {
       dispatch(addEdit(items[props.slno-1]));
       dispatch(removeitem(props.slno-1));
     }
+    toast.info("Edit mode activated ")
   }
   
   

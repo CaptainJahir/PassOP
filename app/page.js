@@ -4,6 +4,7 @@ import Passdesign from "@/components/passDesign";
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { additem } from '@/redux/slice/ArraySlice'
+import { ToastContainer , toast } from "react-toastify";
 
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
@@ -44,10 +45,12 @@ export default function Home() {
       webnameRef.current.value = "";
       usernameRef.current.value = ""
       passRef.current.value = "";
+      toast.success("Saved Sucessfully")
 
     }
     else{
-      alert("The input fieds must not be empty")
+      // alert("The input fieds must not be empty")
+      toast.error("Input Fields Must not be Empty");
     }
   }
   
@@ -65,6 +68,9 @@ export default function Home() {
   
   return (
     <div className="bg-green-100 w-[100vw] h-[100vh]">
+      
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover pauseOnFocusLoss draggable theme="colored"/>
+      
       {/* Navbar Goes Here */}
       <div className="bg-slate-700 w-full h-[8%] flex items-center justify-between px-10">
         {/* Logo */}
