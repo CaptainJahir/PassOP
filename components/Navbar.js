@@ -10,8 +10,17 @@ const Navbar = () => {
     setMode(previous => previous === "/assets/light-mode.png" ? "/assets/dark-mode.png": "/assets/light-mode.png");
     };
       
+    const moreBtn = () => {
+      console.log("More has been accessed");
+    }
+    
   return (
-      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between px-10 xs:bg-red-600">
+      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between px-10 max-xs:px-6">
+        {/* this displays small screen devices */}
+        <div className='hidden max-xs:block' onClick={() => {moreBtn()}}>
+            <Image src="/assets/more.png" width={24} height={24} alt="more" className='invert' />
+        </div>
+
         {/* Logo */}
         <div className="font-bold text-white flex items-center cursor-pointer">
           <span className="text-green-500 text-2xl">&lt;</span>
@@ -21,8 +30,8 @@ const Navbar = () => {
           </span>
           <span className="text-green-500 text-lg">/&gt;</span>
         </div>
-
-        <div className='flex items-center justify-center gap-1 text-white font-semibold'>
+        {/* this displays on large screen devices */}
+        <div className='flex items-center justify-center gap-1 text-white font-semibold max-xs:hidden'>
             {/* Generate Password Button */}
             <Link href="/genpass">
                 <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
