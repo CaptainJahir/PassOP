@@ -60,13 +60,6 @@ const Navbar = () => {
                 </div>
             </Link>
 
-            {/* Feedback button */}
-            <Link href="/feedback">
-                <div className='border px-6 rounded-full py-1 border-transparent hover:border-white cursor-pointer'>
-                    Feedback
-                </div>
-            </Link>
-
             {/* Dark and Light Mode Button */}
             <div>
                 <Image src={Mode} height={28} width={28} alt="modes" className='invert cursor-pointer' onClick={() => {handleMode()}}/>

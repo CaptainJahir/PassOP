@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { additem } from '@/redux/slice/ArraySlice'
 import { ToastContainer , toast } from "react-toastify";
+import Feedback from "@/components/feedback";
 
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
@@ -68,6 +69,7 @@ export default function Home() {
   
   return (
     <div className="bg-green-100 w-[100vw] overflow-x-hidden">
+      <Feedback />
       {/* this is a more div container available in small screen devices */}
       <div className='bg-gray-100 z-10 h-30 hidden'>
             <ul className="bg-[rgb(24,80,103)] text-white px-3">
