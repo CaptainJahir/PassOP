@@ -15,7 +15,7 @@ const Navbar = () => {
     }
     
   return (
-      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between px-10 max-xs:px-6">
+      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between fixed top-0 px-10 max-xs:px-6">
         {/* this displays small screen devices */}
         <div className='hidden max-xs:block' onClick={() => {moreBtn()}}>
             <Image src="/assets/more.png" width={24} height={24} alt="more" className='invert' />
@@ -35,7 +35,7 @@ const Navbar = () => {
             {/* Generate Password Button */}
             <Link href="/genpass">
                 <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
-                    <Image src="/assets/Genpass-Logo.png" width={21} height={21} alt="github link" className='invert' />
+                    <Image src="/assets/GenpassLogo.png" width={21} height={21} alt="genpass logo" className='invert' priority={false} loading='lazy'/>
                     <span>
                         GenPass
                     </span>
