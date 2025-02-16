@@ -85,7 +85,7 @@ export default function Home() {
 
       {/* Body Goes here */}
 
-      <div>
+      <div className="mt-[6rem]">
         {/* here goes the logo and its tag line */}
         <div className="flex flex-col justify-center items-center my-6">
           {/* here goes the logo */}

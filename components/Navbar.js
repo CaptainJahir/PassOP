@@ -22,16 +22,26 @@ const Navbar = () => {
         </div>
 
         {/* Logo */}
-        <div className="font-bold text-white flex items-center cursor-pointer">
-          <span className="text-green-500 text-2xl">&lt;</span>
-          <span className="text-lg">
-            Pass
-            <span className="text-lg text-green-500">OP</span>
-          </span>
-          <span className="text-green-500 text-lg">/&gt;</span>
-        </div>
+        <Link href="/">
+            <div className="font-bold text-white flex items-center cursor-pointer">
+            <span className="text-green-500 text-2xl">&lt;</span>
+            <span className="text-lg">
+                Pass
+                <span className="text-lg text-green-500">OP</span>
+            </span>
+            <span className="text-green-500 text-lg">/&gt;</span>
+            </div>
+        </Link>
         {/* this displays on large screen devices */}
-        <div className='flex items-center justify-center gap-1 text-white font-semibold max-xs:hidden'>
+        <div className='flex items-center justify-center text-white font-semibold max-xs:hidden'>
+            {/* Home */}
+            <Link href="/">
+                <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
+                    <Image src="/assets/home.png" alt="home" height={21} width={21} className='invert'/>
+                    <span>Home</span>
+                </div>
+            </Link>
+            
             {/* Generate Password Button */}
             <Link href="/genpass">
                 <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
