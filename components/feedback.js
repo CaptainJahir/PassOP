@@ -34,10 +34,10 @@ const Feedback = () => {
         </div>
 
         {/* Feedback Form */}
-        <div className={`fixed right-0 top-[20%] h-[60vh] w-[26rem] rounded-l-xl bg-gray-100 flex flex-col items-center overflow-y-auto ${display}`}>
+        <div className={`fixed right-0 top-[20%] h-[60vh] w-[26rem] rounded-l-xl bg-gray-100 flex flex-col items-center overflow-y-auto ${display} z-20`}>
 
             {/* logo and close button container */}
-            <div className='flex justify-center items-center w-full relative bg-slate-700 rounded-t-md'>
+            <div className='flex justify-center items-center w-full relative bg-slate-700 rounded-tl-md'>
             {/* Logo */}
             <div className="font-bold flex items-center pb-2 cursor-pointer pt-[1rem]">
                 <span className="text-green-500 text-[1.5rem]">&lt;</span>

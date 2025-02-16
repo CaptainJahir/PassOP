@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       <head>
         <link rel='icon' href='/favicon.png'/>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-green-100`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-green-100 dark:bg-[rgb(21,21,21)]`}>
         <Navbar />
         <ReduxProvider>
           {children}

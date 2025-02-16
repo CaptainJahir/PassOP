@@ -13,7 +13,6 @@ const PasswordGen = () => {
   // checked state of all input tags
   const [lowerCheck, setlowerCheck] = useState(true);
   const [upperCheck, setupperCheck] = useState(false);
-  const [mixCaseCheck, setmixCaseCheck] = useState(false);
   const [specialCharCheck, setspecialCharCheck] = useState(true);
   const [numbCheck, setNumbCheck] = useState(false);
 
@@ -32,15 +31,6 @@ const PasswordGen = () => {
     if (upperCheck) {
       updatecharSet.push(upperAlpha);
     }
-    if (mixCaseCheck) {
-      if (lowerCheck && !upperCheck) {
-        updatecharSet.push(upperAlpha);
-      } else if (!lowerCheck && upperCheck) {
-        updatecharSet.push(lowerAlpha);
-      } else if (!lowerCheck && !upperCheck) {
-        updatecharSet.push(lowerAlpha, upperAlpha);
-      }
-    }
     if (specialCharCheck) {
       updatecharSet.push(specialChar);
     }
@@ -50,7 +40,7 @@ const PasswordGen = () => {
     if (JSON.stringify(charSet) !== JSON.stringify(updatecharSet)) {
       setcharSet(updatecharSet);
     }
-  }, [upperCheck, lowerCheck, mixCaseCheck, specialCharCheck, numbCheck]);
+  }, [upperCheck, lowerCheck, specialCharCheck, numbCheck]);
 
   //  this is for range input tag
   const [passLen, setpassLen] = useState(16);
@@ -180,7 +170,7 @@ const PasswordGen = () => {
                 onClick={() => generatedpass()}
               />
               <button
-                className="bg-yellow-400 w-[7rem] h-[2rem] rounded-sm text-gray-600 font-semibold"
+                className="bg-yellow-400 w-[7rem] h-[2rem] rounded-sm text-gray-600 font-semibold dark:text-white"
                 onClick={() => {
                   copyBtn();
                 }}
@@ -195,20 +185,21 @@ const PasswordGen = () => {
               height={20}
               width={20}
               alt="strength status"
+              className="dark:invert"
             />
-            <span>{passStrength}</span>
+            <span className="dark:text-white">{passStrength}</span>
           </div>
         </div>
       </div>
 
-      <div className="bg-white h-[4rem]  w-[67%] mx-auto pt-5">
-        <div className="text-lg text-gray-600 pl-[3rem]">
+      <div className="bg-white h-[4rem] w-[67%] mx-auto pt-5 dark:bg-gray-900">
+        <div className="text-lg text-gray-600 pl-[3rem] dark:text-white">
           Use the slider, and select from the options, below, to lengthen your
           password and strengthen your security.
         </div>
         {/* Range input and it's value */}
-        <div className="flex justify-center flex-col gap-2 bg-white">
-          <div className="text-gray-500 pl-[3rem] my-5">
+        <div className="flex justify-center flex-col gap-2 bg-white dark:bg-gray-900">
+          <div className="text-gray-500 pl-[3rem] my-5 dark:text-white">
             Password range (4-64)
           </div>
           <div className="flex flex-col justify-center items-center gap-2 w-full">
@@ -220,13 +211,13 @@ const PasswordGen = () => {
               onChange={(e) => setpassLen(e.target.value)}
               className="w-[80%] h-[1px]"
             />
-            <div className="text-2xl text-gray-600 font-semibold">
+            <div className="text-2xl text-gray-600 font-semibold dark:text-white">
               {passLen}
             </div>
           </div>
         </div>
         {/* input tags */}
-        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center">
+        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center dark:bg-gray-900 dark:text-white">
           <div className="flex justify-center items-center gap-1">
             <input
               type="checkbox"
@@ -249,18 +240,6 @@ const PasswordGen = () => {
               onChange={() => checkChange(upperCheck, setupperCheck)}
             />
             <label htmlFor="uppercase">Upper case</label>
-          </div>
-
-          <div className="flex justify-center items-center gap-1">
-            <input
-              type="checkbox"
-              name="mixedCase"
-              id="mixedCase"
-              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer"
-              checked={mixCaseCheck}
-              onChange={() => checkChange(mixCaseCheck, setmixCaseCheck)}
-            />
-            <label htmlFor="mixedCase">Mixed case</label>
           </div>
 
           <div className="flex justify-center items-center gap-1">

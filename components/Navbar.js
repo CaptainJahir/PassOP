@@ -1,21 +1,44 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from "next/image";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const [Mode, setMode] = useState("/assets/light-mode.png");
+    const [isDarkMode, setisDarkMode] = useState(false);
     const handleMode = () => {
     setMode(previous => previous === "/assets/light-mode.png" ? "/assets/dark-mode.png": "/assets/light-mode.png");
     };
+
+    useEffect(() => {
+        if (isDarkMode) {
+            // dark mode turned ON
+          document.documentElement.classList.add('dark');
+        } else {
+            // dark mode turned OFF
+            document.documentElement.classList.remove('dark');
+        }
+    }, [Mode, isDarkMode]);
+    
+    useEffect(() => {
+        if (Mode === "/assets/light-mode.png") {
+            setisDarkMode(false);
+            toast.success("Light mode ON");
+        }else{
+            setisDarkMode(true);
+            toast.success("Dark mode ON");
+        }
+    }, [Mode]);
+    
       
     const moreBtn = () => {
       console.log("More has been accessed");
     }
     
   return (
-      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between fixed top-0 px-10 max-xs:px-6">
+      <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between fixed top-0 px-10 max-xs:px-6 dark:bg-[rgb(70,0,0)]">
         {/* this displays small screen devices */}
         <div className='hidden max-xs:block' onClick={() => {moreBtn()}}>
             <Image src="/assets/more.png" width={24} height={24} alt="more" className='invert' />
@@ -24,12 +47,12 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/">
             <div className="font-bold text-white flex items-center cursor-pointer">
-            <span className="text-green-500 text-2xl">&lt;</span>
+            <span className="text-green-500 text-2xl dark:text-red-500">&lt;</span>
             <span className="text-lg">
                 Pass
-                <span className="text-lg text-green-500">OP</span>
+                <span className="text-lg text-green-500 dark:text-red-500">OP</span>
             </span>
-            <span className="text-green-500 text-lg">/&gt;</span>
+            <span className="text-green-500 text-lg dark:text-red-500">/&gt;</span>
             </div>
         </Link>
         {/* this displays on large screen devices */}
@@ -55,7 +78,7 @@ const Navbar = () => {
             {/* Github Link */}
             <Link href="https://github.com/">
                 <div className="flex items-center justify-around w-28 cursor-pointer rounded-full px-2 py-1 border border-transparent hover:border-white">
-                    <Image src="/assets/github.ico" width={28} height={28} alt="github link" />
+                    <Image src="/assets/github.ico" width={28} height={28} alt="github link" className='dark:invert'/>
                     <span>GitHub</span>
                 </div>
             </Link>

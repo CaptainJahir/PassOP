@@ -68,7 +68,7 @@ export default function Home() {
   }
   
   return (
-    <div className="bg-green-100 w-[100vw] overflow-x-hidden">
+    <div className="bg-green-100 w-[100vw] overflow-x-hidden dark:bg-[rgb(21,21,21)]">
       <Feedback />
       {/* this is a more div container available in small screen devices */}
       <div className='bg-gray-100 z-10 h-30 hidden'>
@@ -93,16 +93,16 @@ export default function Home() {
           {/* here goes the logo */}
           <div>
             <div className="font-bold text-black flex items-center cursor-pointer">
-              <span className="text-green-600 text-5xl max-xs:text-2xl">&lt;</span>
-              <span className="text-4xl max-xs:text-2xl">
+              <span className="text-green-600 text-5xl max-xs:text-2xl dark:text-red-500">&lt;</span>
+              <span className="text-4xl max-xs:text-2xl dark:text-white">
                 Pass
-                <span className="text-4xl text-green-600 max-xs:text-2xl">OP</span>
+                <span className="text-4xl text-green-600 max-xs:text-2xl dark:text-red-500">OP</span>
               </span>
-              <span className="text-green-600 text-4xl max-xs:text-2xl">/&gt;</span>
+              <span className="text-green-600 text-4xl max-xs:text-2xl dark:text-red-500">/&gt;</span>
             </div>
           </div>
           {/* here goes the tag line */}
-          <span>
+          <span className="dark:text-white">
             Your Trusted Password Vault
           </span>
         </div>
@@ -122,10 +122,10 @@ export default function Home() {
               <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
             </div>
           </div>
-          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6" onClick={() => {handleSave()}}>
+          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900" onClick={() => {handleSave()}}>
             Save
             <span>
-              <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem]"/>
+              <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem] dark:invert"/>
             </span>
           </button>
         </div>
@@ -134,7 +134,7 @@ export default function Home() {
 
         <div className="w-[80%] mx-auto max-xs:w-[95%]">
           {/* Heading */}
-          <span className="font-bold text-xl">
+          <span className="font-bold text-xl dark:text-white">
             Your Passwords
           </span>
 
@@ -142,7 +142,7 @@ export default function Home() {
 
           <div className="w-full mt-3">
             {/* Here Goes the headings */}
-            <div className="font-semibold text-md text-white bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_.6fr] gap-4 max-xs:gap-1 max-xs:text-sm max-xs:grid-cols-[1.5fr_1fr_1fr_.6fr]">
+            <div className="font-semibold text-md text-white bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_.6fr] gap-4 dark:bg-[rgb(70,0,0)] max-xs:gap-1 max-xs:text-sm max-xs:grid-cols-[1.5fr_1fr_1fr_.6fr]">
 
               <span className="flex justify-center items-center max-xs:hidden">
                 s.no
@@ -165,7 +165,7 @@ export default function Home() {
               </span>
             </div>
             {/* Here Goes the Credentials Passwords */}
-            <div className="bg-green-200 border border-green-200 mb-20 rounded-b-lg">
+            <div className="bg-green-200 border border-green-200 mb-20 rounded-b-lg dark:text-white dark:bg-black dark:border-black">
               {items.map((item , index) => {
                 return <Passdesign url={item.website} username={item.user} passkey={item.pass} key={index} slno = {index+1}/>;
               })}      
