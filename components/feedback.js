@@ -27,25 +27,25 @@ const Feedback = () => {
     
   return (
     <div>
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover pauseOnFocusLoss draggable theme="colored"/>
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable theme="colored"/>
         {/* feedback button */}
         <div className={`fixed right-[-2.2rem] top-[50%] w-[6rem] h-[1.5rem] rotate-[270deg] bg-gray-800 text-white font-medium rounded-t-md text-center cursor-pointer ${feedbackBtn}`} onClick={() => {handleFeedbackBtn()}}>
             Feedback
         </div>
 
         {/* Feedback Form */}
-        <div className={`fixed right-0 top-[20%] h-[60vh] w-[26rem] rounded-l-xl bg-gray-100 flex flex-col items-center overflow-y-auto ${display} z-20`}>
+        <div className={`fixed right-0 top-[20%] h-[60vh] w-[26rem] rounded-l-xl bg-gray-100 flex flex-col items-center overflow-y-auto ${display} z-20 dark:bg-slate-800`}>
 
             {/* logo and close button container */}
-            <div className='flex justify-center items-center w-full relative bg-slate-700 rounded-tl-md'>
+            <div className='flex justify-center items-center w-full relative bg-slate-700 rounded-tl-md dark:bg-[rgb(70,0,0)]'>
             {/* Logo */}
             <div className="font-bold flex items-center pb-2 cursor-pointer pt-[1rem]">
-                <span className="text-green-500 text-[1.5rem]">&lt;</span>
+                <span className="text-green-500 text-[1.5rem] dark:text-red-500">&lt;</span>
                 <span className="text-[1.5rem] text-white">
                     Pass
-                    <span className="text-[1.5rem] text-green-500">OP</span>
+                    <span className="text-[1.5rem] text-green-500 dark:text-red-500">OP</span>
                 </span>
-                <span className="text-green-500 text-[1.5rem]">/&gt;</span>
+                <span className="text-green-500 text-[1.5rem] dark:text-red-500">/&gt;</span>
             </div>
             {/* Close button */}
             <div className='cursor-pointer absolute right-1 invert mr-2' onClick={() => {handleClose()}}>
@@ -53,9 +53,9 @@ const Feedback = () => {
             </div>
             </div>
 
-            <form action="" className='w-full h-full pl-3 mt-4 px-1'>
+            <form action="" className='w-full h-full pl-3 mt-4 px-1 text-gray-600 dark:bg-slate-800 dark:text-white'>
                 {/* Rating */}
-                <div className='text-gray-600 flex flex-col gap-5'>
+                <div className=' flex flex-col gap-5'>
                     {/* Question */}
                     <div className='text-sm'>
                         *How likely are you to recommend this password manager to a friend or coworker (on a scale from 1 to 10)?
@@ -106,7 +106,7 @@ const Feedback = () => {
                 </div>
                 
                 {/* Bugs */}
-                <div className='text-gray-600 flex flex-col gap-5 mt-4'>
+                <div className='flex flex-col gap-5 mt-4'>
                     {/* Question */}
                     <div className='text-sm'>
                         *Did you encounter any bugs?
@@ -129,12 +129,12 @@ const Feedback = () => {
 
                 {/* Details */}
 
-                <div className='text-gray-600 flex flex-col gap-5 mt-4'>
+                <div className='flex flex-col gap-5 mt-4'>
                     <div className='text-sm'>
                         *If you encountered any bugs, please provide details. If not, we would appreciate any suggestions on how we can improve.
                     </div>
 
-                    <textarea name="issue" id="issue" rows="3" className='rounded-sm px-1'></textarea>
+                    <textarea name="issue" id="issue" rows="3" className='rounded-sm px-1 dark:bg-gray-600'></textarea>
                 </div>
                 
                 <button className='mt-4 bg-blue-500 text-white w-full rounded-full h-[2.4rem] text-lg font-semibold mb-[2rem]' onClick={() => {handleSubmit()}}>Submit</button>

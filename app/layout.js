@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "@/redux/ReduxProvider";
 import Navbar from "@/components/Navbar";
+import Feedback from "@/components/feedback";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden bg-green-100 dark:bg-[rgb(21,21,21)]`}>
         <Navbar />
+        <Feedback />
         <ReduxProvider>
           {children}
         </ReduxProvider>

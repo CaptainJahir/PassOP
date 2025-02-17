@@ -25,10 +25,8 @@ const Navbar = () => {
     useEffect(() => {
         if (Mode === "/assets/light-mode.png") {
             setisDarkMode(false);
-            toast.success("Light mode ON");
         }else{
             setisDarkMode(true);
-            toast.success("Dark mode ON");
         }
     }, [Mode]);
     
