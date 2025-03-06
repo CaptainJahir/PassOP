@@ -5,6 +5,7 @@ import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { additem } from '@/redux/slice/ArraySlice'
 import { ToastContainer , toast } from "react-toastify";
+import { useForm } from "react-hook-form";
 
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
@@ -15,6 +16,9 @@ export default function Home() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.CredentialArray.items);
   const edititems = useSelector(state => state.Editarray.value);
+  const [itemsArr, setItemsArr] = useState(() => {
+    return JSON.parse(localStorage.getItem("Credentials")) || [];
+  });
   
 
   const editFunction = () => {
@@ -30,30 +34,17 @@ export default function Home() {
   }, [edititems])
   
 
-  const handleSave = () => {
-    const webname = webnameRef.current.value;
-    const username = usernameRef.current.value;
-    const password = passRef.current.value;
-    // this data is in the form of JSON
-    const inputData = {
-      website: webname ,
-      user: username , 
-      pass: password
-    }
-    if(inputData.web !== "" && inputData.user !== "" && inputData.pass !== ""){
-      dispatch(additem(inputData))
-      webnameRef.current.value = "";
-      usernameRef.current.value = ""
-      passRef.current.value = "";
-      toast.success("Saved Sucessfully")
-
-    }
-    else{
-      // alert("The input fieds must not be empty")
-      toast.error("Input Fields Must not be Empty");
-    }
+  // Form Handling
+  const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+  const onSubmit = (data) => {
+    setItemsArr(prevArr => [...prevArr, data]);
+    reset();
   }
-  
+  useEffect(() => {
+    localStorage.setItem("Credentials", JSON.stringify(itemsArr));
+  }, [itemsArr])
+
+
 
   const toggleBtn = () => {
     if (img === "/assets/show.png") {
@@ -105,28 +96,31 @@ export default function Home() {
           </span>
         </div>
 
-        {/* Here Goes the input tags */}
-
-        <div className="flex flex-col justify-center">
-          {/* Website name */}
-          <input type="text" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10 max-xs:w-[90%]" ref={webnameRef}/>
-          <div className="flex gap-6 mx-auto w-2/4 mt-6 max-xs:flex-col max-xs:w-full max-xs:items-center">
-            {/* username inputtag */}
-            <input type="text" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2 max-xs:w-[90%]" ref={usernameRef} />
-            {/* password input tag */}
-            <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4 max-xs:w-[90%]">
-            <input type={inptype} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" ref={passRef}/>
-            {/* here goes the hide show img */}
-              <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
-            </div>
+        {/* Here Goes the Input Form */}
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="flex flex-col justify-center">
+              {/* Website name */}
+              <input {...register("web")} placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10 max-xs:w-[90%]" />
+              <div className="flex gap-6 mx-auto w-2/4 mt-6 max-xs:flex-col max-xs:w-full max-xs:items-center">
+                {/* username input tag */}
+                <input {...register("user")} placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2 max-xs:w-[90%]" />
+                {/* password input tag */}
+                <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4 max-xs:w-[90%]">
+                {/* <input type={inptype} {...register("password")} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" ref={passRef}/> */}
+                <input type={inptype} {...register("pass")} placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
+                {/* here goes the hide show img */}
+                  <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
+                </div>
+              </div>
           </div>
-          <button className="mt-6 bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900" onClick={() => {handleSave()}}>
-            Save
+          {/* Submit button */}
+          <button type="submit" className="mt-6 w-[8rem] bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900">
+            <span>Submit</span>
             <span>
               <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem] dark:invert"/>
             </span>
           </button>
-        </div>
+        </form>
 
         {/* Here gos the credential details */}
 
@@ -164,8 +158,8 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200 mb-20 rounded-b-lg dark:text-white dark:bg-black dark:border-black">
-              {items.map((item , index) => {
-                return <Passdesign url={item.website} username={item.user} passkey={item.pass} key={index} slno = {index+1}/>;
+              {itemsArr.map((item , index) => {
+                return <Passdesign url={item.web} username={item.user} passkey={item.pass} key={index} slno = {index+1}/>;
               })}      
             </div>
           </div>
