@@ -3,7 +3,7 @@ import Image from "next/image";
 import Passdesign from "@/components/passDesign";
 import { useRef, useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { additem } from '@/redux/slice/ArraySlice'
+import { additem, getItem } from '@/redux/slice/ArraySlice'
 import { ToastContainer , toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 
@@ -16,11 +16,18 @@ export default function Home() {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.CredentialArray.items);
   const edititems = useSelector(state => state.Editarray.value);
-  const [itemsArr, setItemsArr] = useState(() => {
-    return JSON.parse(localStorage.getItem("Credentials")) || [];
-  });
   
 
+  useEffect(() => {
+    let retriveItems;
+    try {
+      retriveItems = JSON.parse(localStorage.getItem("creds"));
+    } catch (e) {
+      retriveItems = [];
+    }
+    dispatch(getItem(retriveItems));
+  }, [])
+  
   const editFunction = () => {
     if (edititems.length !== 0) {
       webnameRef.current.value = edititems[0].website
@@ -37,12 +44,12 @@ export default function Home() {
   // Form Handling
   const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
   const onSubmit = (data) => {
-    setItemsArr(prevArr => [...prevArr, data]);
+    dispatch(additem(data));
     reset();
   }
   useEffect(() => {
-    localStorage.setItem("Credentials", JSON.stringify(itemsArr));
-  }, [itemsArr])
+    localStorage.setItem("creds", JSON.stringify(items));
+  }, [items])
 
 
 
@@ -158,7 +165,7 @@ export default function Home() {
             </div>
             {/* Here Goes the Credentials Passwords */}
             <div className="bg-green-200 border border-green-200 mb-20 rounded-b-lg dark:text-white dark:bg-black dark:border-black">
-              {itemsArr.map((item , index) => {
+              {items.map((item , index) => {
                 return <Passdesign url={item.web} username={item.user} passkey={item.pass} key={index} slno = {index+1}/>;
               })}      
             </div>

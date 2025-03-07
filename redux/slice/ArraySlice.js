@@ -14,9 +14,12 @@ export const credSlice = createSlice({
     removeitem: (state , action) => {
       state.items.splice(action.payload,1);
     },
+    getItem: (state, action) => {
+      state.items = action.payload;
+    }
   },
 })
 
-export const { additem, removeitem } = credSlice.actions
+export const { additem, removeitem, getItem } = credSlice.actions
 
 export default credSlice.reducer
