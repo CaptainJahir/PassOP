@@ -25,12 +25,22 @@ export default function Home() {
     dispatch(getItem(retriveItems));
   }, [])
   
-  const { register, handleSubmit, setValue, formState: { errors }, reset } = useForm();
+  const { register, handleSubmit, setValue, getValues, formState: { errors }, reset } = useForm();
   const onSubmit = (data) => {
-    dispatch(additem(data));
-    toast.success("Saved Sucessfully");
-    reset();
+      dispatch(additem(data));
+      toast.success("Saved Sucessfully");
+      reset();
   }
+  const inpValidation = () => {
+    if (getValues("web") === "" || getValues("user") ==="" || getValues("pass") ==="" ) {
+      toast.info("Input fields must not be empty");
+    }else if (getValues("user").length <4 ) {
+      toast.info("The username must be at least 4 characters long.")
+    }else if (getValues("pass").length <4) {
+      toast.info("The password must be at least 4 characters long.")
+    }
+  }
+  
 
   const editFunction = () => {
     if (edititems.length !== 0) {
@@ -106,20 +116,20 @@ export default function Home() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex flex-col justify-center">
               {/* Website name */}
-              <input {...register("web")} name="web" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10 max-xs:w-[90%]" />
+              <input {...register("web", {required:true})} name="web" placeholder="Enter Website Name" className="px-6 text-lg w-2/4 mx-auto rounded-full h-10 max-xs:w-[90%]" />
               <div className="flex gap-6 mx-auto w-2/4 mt-6 max-xs:flex-col max-xs:w-full max-xs:items-center">
                 {/* username input tag */}
-                <input {...register("user")} name="user" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2 max-xs:w-[90%]" />
+                <input {...register("user", {required:true, minLength:4})} name="user" placeholder="Enter username" className="h-10 text-lg rounded-full px-4 w-1/2 max-xs:w-[90%]" />
                 {/* password input tag */}
                 <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4 max-xs:w-[90%]">
-                <input type={inptype} {...register("pass")} name="pass" placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
+                <input type={inptype} {...register("pass", {required:true, minLength:4})} name="pass" placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
                 {/* here goes the hide show img */}
                   <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
                 </div>
               </div>
           </div>
           {/* Submit button */}
-          <button type="submit" className="mt-6 w-[8rem] bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900">
+          <button type="submit" onClick={() => {inpValidation()}} className="mt-6 w-[8rem] bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900">
             <span>Submit</span>
             <span>
               <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem] dark:invert"/>
