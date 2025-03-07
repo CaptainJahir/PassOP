@@ -5,7 +5,7 @@ const page = () => {
 // write password length authentication
 
   return (
-    <div className="bg-[url('/assets/PassGenBg.jpg')] dark:bg-none dark:bg-[#573e3e70] text-white h-[100vh]">
+    <div className="bg-[url('/assets/PassGenBg.jpg')] dark:bg-[url('/assets/PassGenDarkBg2.webp')] bg-cover text-white h-[100vh]">
       {/* Logo */}
       <div className="flex justify-center pt-[3rem] items-center flex-col gap-1">
         <div className="text-5xl mt-12 font-bold text-gray-400">
