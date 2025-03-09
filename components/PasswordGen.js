@@ -144,7 +144,7 @@ const PasswordGen = () => {
         theme="colored"
       />
       <div
-        className={`${passStrengthColor} w-3/4 mx-auto mt-10 flex justify-center items-center max-sm:w-full md:w-[90%]`}
+        className={`${passStrengthColor} w-3/4 mx-auto mt-10 flex justify-center items-center max-sm:w-full md:w-[90%] lg:w-[85%] xl:w-[80%]`}
       >
         {/* pass and Strength tag here */}
 
@@ -193,7 +193,7 @@ const PasswordGen = () => {
         </div>
       </div>
 
-      <div className="bg-white w-[67%] mx-auto pt-5 dark:bg-gray-900 max-sm:w-[100%] md:w-[86%]">
+      <div className="bg-white w-[67%] mx-auto pt-5 dark:bg-gray-900 max-sm:w-[100%] md:w-[86%] lg:w-[80%] xl:w-[75%]">
         <div className="text-lg text-gray-600 pl-[3rem] dark:text-white max-sm:text-center max-sm:pl-0 max-sm:text-base">
           Use the slider, and select from the options, below, to lengthen your
           password and strengthen your security.

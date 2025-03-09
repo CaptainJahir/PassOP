@@ -18,6 +18,7 @@ export default {
         'max-md': { 'max': '768px' },
         'max-lg': { 'max': '1024px' },
         'max-xl': { 'max': '1280px' },
+        'custom-res': { 'min': '769px', 'max': '940px' }
       },
     },
   },

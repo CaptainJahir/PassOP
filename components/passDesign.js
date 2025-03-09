@@ -72,26 +72,24 @@ const Passdesign = (props) => {
   
 
   return (
-    <div className="py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_.6fr] gap-4 mb-2 bg-green-200 dark:bg-black max-md:grid-cols-[1fr_1fr_1fr_.6fr] max-md:gap-1">
+    <div className="py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_1.15fr] gap-4 mb-2 bg-green-200 dark:bg-black max-md:grid-cols-[1fr_1fr_1fr_.6fr] max-md:gap-1">
       <span className='flex justify-center items-center cursor-pointer font-semibold rounded-full hover:bg-[rgb(181,255,181)] dark:hover:bg-slate-900 max-md:hidden'>
         {/* here props serial number starts from 1,2,3... not from 0,1,2,3... mind it */}
         {props.slno}
       </span>
       {/* Website URL */}
-      <div className='grid grid-cols-[1fr_.1fr] gap-1 w-full place-content-between truncate max-md:flex max-md:justify-start max-md:items-center'>
-      <Link href={props.url} target='_blank'>
-        <div className="flex justify-start items-center w-[25rem] font-semibold truncate cursor-pointer px-1 max-md:px-0 hover:bg-[rgb(181,255,181)] dark:hover:bg-slate-900 dark:rounded-full dark:py-1 pl-2" ref={urlRef} onTouchStart={() => {TouchStart(props.url)}} onTouchEnd={() => {TouchEnd()}}>      
+      <div className='grid grid-cols-[1fr_.3fr] gap-4 max-md:flex max-md:w-[90%] truncate md:grid-cols-[1fr_0.2fr] md:gap-2'>
+        <div className="flex items-center rounded-full font-semibold cursor-pointer dark:hover:bg-slate-900 dark:rounded-full dark:py-1 max-md:w-full truncate hover:bg-[rgb(181,255,181)]" ref={urlRef} onTouchStart={() => {TouchStart(props.url)}} onTouchEnd={() => {TouchEnd()}}>
           {props.url}
         </div>
-      </Link>
 
-      {/* Here Goes the copy button */}
+        {/* Here Goes the copy button */}
       
-      <Image src="/assets/Copy.png" alt="revel" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" onClick={() => {copyurl()}}/>
+        <Image src="/assets/Copy.png" alt="revel" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" onClick={() => {copyurl()}}/>
       </div>
 
       {/* Username container */}
-      <div className='grid grid-cols-[1fr_.3fr] gap-4 max-md:flex max-md:w-[90%] truncate'>
+      <div className='grid grid-cols-[1fr_.3fr] gap-4 max-md:flex max-md:w-[90%] truncate md:grid-cols-[1fr_0.8fr] md:gap-1'>
         <div className="flex items-center rounded-full font-semibold cursor-pointer dark:hover:bg-slate-900 dark:rounded-full dark:py-1 max-md:w-full truncate hover:bg-[rgb(181,255,181)]" ref={userRef} onTouchStart={() => {TouchStart(props.username)}} onTouchEnd={() => {TouchEnd()}}>
           {props.username}
         </div>
@@ -102,7 +100,7 @@ const Passdesign = (props) => {
       </div>
 
       {/* Here Goes the Password */}
-      <div className='grid grid-cols-[1fr_.5fr] gap-6 max-md:flex'>
+      <div className='grid grid-cols-[1fr_.5fr] gap-6 max-md:flex md:grid-cols-[1fr_0.8fr] md:gap-1'>
         <div className="flex justify-center items-center rounded-full truncate hover:bg-[rgb(181,255,181)] dark:hover:bg-slate-900 dark:rounded-full dark:py-1 max-md:w-[90%]" ref={passRef} onTouchStart={() => {TouchStart(props.passkey)}} onTouchEnd={() => {TouchEnd()}}>
           <input type="password" className="bg-transparent outline-none cursor-pointer w-full" value={props.passkey} readOnly />
         </div>

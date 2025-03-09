@@ -149,25 +149,25 @@ export default function Home() {
 
           <div className="w-full mt-3">
             {/* Here Goes the headings */}
-            <div className="font-semibold text-md text-white bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_.6fr] gap-4 dark:bg-[rgb(70,0,0)] max-md:gap-1 max-md:text-sm max-md:grid-cols-[1fr_1fr_1fr_.6fr]">
+            <div className="font-semibold text-md text-white bg-green-600 rounded-t-xl py-1 px-2 grid grid-cols-[.2fr_2fr_1fr_.8fr_1.15fr] gap-4 dark:bg-[rgb(70,0,0)] max-md:gap-1 max-md:text-sm max-md:grid-cols-[1fr_1fr_1fr_.6fr] md:px-1 md:gap-1 custom-res:grid-cols-[.2fr_2fr_1.2fr_.9fr_1.7fr]">
 
               <span className="flex justify-center items-center max-md:hidden">
                 s.no
               </span>
 
-              <span className="flex justify-start pl-3 items-center max-md:justify-start max-md:px-[0.1rem]">
+              <span className="flex justify-start items-center max-md:justify-start max-md:px-[0.1rem] custom-res:justify-center">
                 Site
               </span>
 
-              <span className="flex justify-start pl-1 items-center">
+              <span className="flex justify-start items-center md:items-start custom-res:justify-center">
                 Username
               </span>
 
-              <span className="flex justify-start pl-3 items-center max-md:pl-0">
+              <span className="flex justify-star items-center custom-res:justify-end">
                 Password
               </span>
 
-              <span className="flex justify-center items-center">
+              <span className="flex justify-center items-center custom-res:ml-2">
                 Actions
               </span>
             </div>
