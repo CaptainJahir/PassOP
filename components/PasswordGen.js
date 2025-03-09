@@ -44,9 +44,10 @@ const PasswordGen = () => {
 
   //  this is for range input tag
   const [passLen, setpassLen] = useState(16);
-  useEffect(() => {
-    if (passLen < 4) setpassLen(4);
-  }, [passLen]);
+    if (passLen < 4){
+      setpassLen(4);
+    }
+ 
 
   function passGen(passwordLength, charSet) {
     // const allcharSet = [upperAlpha, lowerAlpha, specialChar, numbers];
@@ -143,39 +144,40 @@ const PasswordGen = () => {
         theme="colored"
       />
       <div
-        className={`${passStrengthColor} w-3/4 mx-auto mt-10 flex justify-center items-center `}
+        className={`${passStrengthColor} w-3/4 mx-auto mt-10 flex justify-center items-center max-sm:w-full md:w-[90%]`}
       >
         {/* pass and Strength tag here */}
 
         <div className="h-[12rem] w-full rounded-sm flex flex-col justify-center items-center text-white">
           {/* password */}
-          <div className="flex justify-center items-center pb-2 pl-4 border-b-[1px] border-b-white w-[70%]">
+          <div className="flex justify-center items-center pb-2 pl-4 border-b-[1px] border-b-white w-[70%] max-sm:w-[95%]">
             <input
               type="text"
-              className="text-3xl bg-transparent w-[90%] outline-none overflow-y-hidden h-[3rem]"
+              className="text-3xl bg-transparent w-[90%] outline-none overflow-y-hidden h-[3rem] max-md:text-xl"
               readOnly
               ref={passValRef}
             />
 
             {/* copy and refresh buttons */}
-            <div className="flex justify-center items-center gap-2">
+            <div className="flex justify-center items-center gap-2 z-10">
               <Image
                 src="/assets/refresh.png"
                 height={36}
                 width={36}
                 priority={true}
                 alt="refresh"
-                className="invert cursor-pointer"
+                className="invert cursor-pointer max-md:h-6 max-md:w-6 z-10"
                 onClick={() => generatedpass()}
               />
               <button
-                className="bg-yellow-400 w-[7rem] h-[2rem] rounded-sm text-gray-600 font-semibold dark:text-white"
+                className="bg-yellow-400 w-[7rem] h-[2rem] rounded-sm text-gray-600 font-semibold dark:text-white max-md:hidden z-10"
                 onClick={() => {
                   copyBtn();
                 }}
               >
                 Copy
               </button>
+              <Image src="/assets/Copy.png" alt="copy" height={26} width={26} className="hidden max-md:block invert z-10" onClick={() => {copyBtn();}}/>
             </div>
           </div>
           <div className="text-gray-700 text-lg font-medium flex justify-center items-center gap-1 mt-2">
@@ -191,8 +193,8 @@ const PasswordGen = () => {
         </div>
       </div>
 
-      <div className="bg-white h-[4rem] w-[67%] mx-auto pt-5 dark:bg-gray-900">
-        <div className="text-lg text-gray-600 pl-[3rem] dark:text-white">
+      <div className="bg-white w-[67%] mx-auto pt-5 dark:bg-gray-900 max-sm:w-[100%] md:w-[86%]">
+        <div className="text-lg text-gray-600 pl-[3rem] dark:text-white max-sm:text-center max-sm:pl-0 max-sm:text-base">
           Use the slider, and select from the options, below, to lengthen your
           password and strengthen your security.
         </div>
@@ -216,7 +218,7 @@ const PasswordGen = () => {
           </div>
         </div>
         {/* input tags */}
-        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center dark:bg-gray-900 dark:text-white">
+        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center dark:bg-gray-900 dark:text-white max-sm:flex-col max-sm:items-start max-sm:ml-[6rem] max-sm:text-[1rem]">
           <div className="flex justify-center items-center gap-1">
             <input
               type="checkbox"
