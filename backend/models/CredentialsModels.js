@@ -1,13 +1,17 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 const credentialSchema = new Schema({
-    webname: {type: String},
-    user: {
-        type:String
-    },
-    password: {
+    web: {
         type: String,
-        minlength: [4, 'Password Must at least 3 Charaters long']
+        required: true
+    },
+    user: {
+        type:String,
+        required: true
+    },
+    pass: {
+        type: String,
+        required: true
     }
 });
 

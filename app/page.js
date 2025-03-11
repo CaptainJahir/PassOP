@@ -10,26 +10,53 @@ import { useForm } from "react-hook-form";
 export default function Home() {
   const [img, setimg] = useState("/assets/show.png");
   const [inptype, setinptype] = useState("password");
+  const [firstRender, setfirstRender] = useState(true);
   const dispatch = useDispatch();
   const items = useSelector((state) => state.CredentialArray.items);
   const edititems = useSelector(state => state.Editarray.value);
   
+  const dbRetrive = async () => {
+    let dbCredArr;
+    const dbretriveItems = await fetch("http://localhost:3001/retrive", {
+      method: "GET",
+      headers: {
+        'Content-Type':'application/json'
+      },
+    });
 
-  useEffect(() => {
-    let retriveItems;
     try {
-      retriveItems = JSON.parse(localStorage.getItem("creds"));
+      dbCredArr = await dbretriveItems.json();
     } catch (e) {
-      retriveItems = [];
+      dbCredArr = [];
     }
-    dispatch(getItem(retriveItems));
-  }, [])
+    dispatch(getItem(dbCredArr));
+  }
   
+  useEffect(() => {
+    dbRetrive();
+    setfirstRender(false);
+  }, [])
+
   const { register, handleSubmit, setValue, getValues, formState: { errors }, reset } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
+    let a = await fetch("http://localhost:3001/post", {
+      method:"POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (a.status === 409) {
+      toast.info("Credentials Already Exits");
+    }else if(a.status === 200){
       dispatch(additem(data));
+      let result = await a.json();
+      console.log(result)
       toast.success("Saved Sucessfully");
       reset();
+    }else{
+      toast.error("Failed to Save");
+    }
   }
   const inpValidation = () => {
     if (getValues("web") === "" || getValues("user") ==="" || getValues("pass") ==="" ) {
@@ -42,26 +69,28 @@ export default function Home() {
   }
   
 
-  const editFunction = () => {
-    if (edititems.length !== 0) {
-    setValue("web", edititems[0].web);
-    setValue("user", edititems[0].user);
-    setValue("pass", edititems[0].pass);
-    }
+  const editFunction = async () => {
+    const editItems = await fetch("http://localhost:3001/edit", {
+      method: "DELETE",
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(edititems[0])
+    });
+
+    const editResult = await editItems.json();
+    console.log(editResult);
+    setValue("web", editResult.data.web);
+    setValue("user", editResult.data.user);
+    setValue("pass", editResult.data.pass);
   }
 
   useEffect(() => {
-    editFunction();
+    if (!firstRender) {
+      editFunction();
+    }
   }, [edititems])
   
-
-  // Form Handling
-  useEffect(() => {
-    localStorage.setItem("creds", JSON.stringify(items));
-  }, [items])
-
-
-
   const toggleBtn = () => {
     if (img === "/assets/show.png") {
       setimg("/assets/hide.png")
@@ -88,7 +117,7 @@ export default function Home() {
             </ul>
         </div>
 
-      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable theme="colored"/>
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable theme="colored"/>
 
       {/* Body Goes here */}
 

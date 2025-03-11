@@ -139,7 +139,6 @@ const PasswordGen = () => {
         autoClose={3000}
         hideProgressBar={false}
         closeOnClick
-        pauseOnHover
         draggable
         theme="colored"
       />

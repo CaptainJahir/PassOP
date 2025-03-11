@@ -1,6 +1,5 @@
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRef , useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { removeitem } from '@/redux/slice/ArraySlice'
@@ -51,9 +50,19 @@ const Passdesign = (props) => {
     toast.info("Copied Password Sucessfully")
   }
 
-  const handleDelete = () => {
-    dispatch(removeitem(props.slno-1));
-    toast.success("Deleted Sucessfully");
+  const handleDelete = async () => {
+    let a = await fetch("http://localhost:3001/delete", {
+      method:"DELETE",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(items[props.slno-1])
+    })
+    let res = await a.json();
+      console.log(res);
+      dispatch(removeitem(props.slno-1));
+      toast.success("Deleted Sucessfully");
+    console.log(items[props.slno-1]);
   }
 
   const handleEdit = () => {

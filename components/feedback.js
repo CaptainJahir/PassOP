@@ -21,15 +21,25 @@ const Feedback = () => {
     }
     
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const onSubmit = (data) =>{
-      console.log(data);
-      reset();
-      toast.success("Thank you for submitting your feedback!");
+    const onSubmit = async (data) =>{
+      const a = await fetch('http://localhost:3001/feedback', {
+        method: "POST",
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      if (a.status === 200) {
+        reset();
+        toast.success("Thank you for submitting your feedback!");
+      }else{
+        toast.error("Error encountered");
+      }
     };
     
   return (
     <div className="max-md:hidden">
-        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick pauseOnHover draggable theme="colored"/>
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable theme="colored"/>
         {/* feedback button */}
         <div className={`fixed right-[-2.2rem] top-[50%] w-[6rem] h-[1.5rem] rotate-[270deg] bg-gray-800 text-white font-medium rounded-t-md text-center cursor-pointer ${feedbackBtn}`} onClick={() => {handleFeedbackBtn()}}>
             Feedback
@@ -81,6 +91,7 @@ const Feedback = () => {
                         </button>
                       ))}
                     </div>
+                      <input {...register("rating")} value={rating} className='hidden' />
                   </div>
                   
                   {/* Rating */}
