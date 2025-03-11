@@ -61,7 +61,7 @@ const Feedback = () => {
             </div>
             {/* Close button */}
             <div className='cursor-pointer absolute right-1 invert mr-2' onClick={() => {handleClose()}}>
-                <Image src="/assets/Delete.png" height={21} width={21} alt="close" />
+                <Image src="/assets/Delete.png" height={21} width={21} alt="close" loading='eager'/>
             </div>
             </div>
 
@@ -87,7 +87,7 @@ const Feedback = () => {
                     <div className='flex justify-between items-center w-full px-4'>
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button key={star} onClick={(e) => {setRating(star), e.preventDefault()}} className="cursor-pointer" >
-                          <Image src={star <= rating ? "/assets/fill-star.png" : "/assets/empty-star.png"} alt="star" height={34} width={34} />
+                          <Image src={star <= rating ? "/assets/fill-star.png" : "/assets/empty-star.png"} alt="star" height={34} width={34} loading='lazy' />
                         </button>
                       ))}
                     </div>

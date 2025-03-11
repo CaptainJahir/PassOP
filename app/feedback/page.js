@@ -53,7 +53,7 @@ const page = () => {
                         <div className='flex justify-between items-center w-full px-4'>
                           {[1, 2, 3, 4, 5].map((star) => (
                             <button key={star} onClick={(e) => {setRating(star), e.preventDefault()}} className="cursor-pointer" >
-                              <Image src={star <= rating ? "/assets/fill-star.png" : "/assets/empty-star.png"} alt="star" height={34} width={34} />
+                              <Image src={star <= rating ? "/assets/fill-star.png" : "/assets/empty-star.png"} alt="star" height={34} width={34} loading='lazy' />
                             </button>
                           ))}
                         </div>

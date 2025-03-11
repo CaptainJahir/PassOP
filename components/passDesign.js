@@ -94,7 +94,7 @@ const Passdesign = (props) => {
 
         {/* Here Goes the copy button */}
       
-        <Image src="/assets/Copy.png" alt="revel" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" onClick={() => {copyurl()}}/>
+        <Image src="/assets/Copy.png" alt="copy" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" loading='lazy' onClick={() => {copyurl()}}/>
       </div>
 
       {/* Username container */}
@@ -105,7 +105,7 @@ const Passdesign = (props) => {
 
         {/* Here Goes the copy button */}
       
-        <Image src="/assets/Copy.png" alt="revel" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" onClick={() => {copyuser()}}/>
+        <Image src="/assets/Copy.png" alt="copy" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" loading='lazy' onClick={() => {copyuser()}}/>
       </div>
 
       {/* Here Goes the Password */}
@@ -114,20 +114,20 @@ const Passdesign = (props) => {
           <input type="password" className="bg-transparent outline-none cursor-pointer w-full" value={props.passkey} readOnly />
         </div>
           {/* Here Goes the copy button */}
-        <Image src="/assets/Copy.png" alt="revel" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" onClick={() => {copypass()}}/>
+        <Image src="/assets/Copy.png" alt="copy" width={28} height={28} className="cursor-pointer dark:invert max-md:hidden" loading='lazy' onClick={() => {copypass()}}/>
       </div>
 
         {/* Edit and Delete Option */}
       <div className="flex justify-center gap-3 w-full items-center hover:bg-[rgb(181,255,181)] dark:hover:bg-black dark:rounded-full dark:py-1 max-md:gap-1">
         <span>
-          <Image src="/assets/Edit.png" alt="revel" width={28} height={28} className="cursor-pointer hidden max-md:block dark:invert" onClick={() => {handleEdit()}}/>
+          <Image src="/assets/Edit.png" alt="revel" width={28} height={28} className="cursor-pointer hidden max-md:block dark:invert" loading='lazy' onClick={() => {handleEdit()}}/>
           <div className='bg-[rgb(12,162,240)] text-white w-[4rem] text-lg font-semibold rounded-md py-[.1rem] flex justify-center items-center cursor-pointer max-md:hidden' onClick={() => {handleEdit()}}>
             Edit
           </div>
         </span>
 
         <span>
-          <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer hidden max-md:block dark:invert" onClick={() => {handleDelete()}}/>
+          <Image src="/assets/Delete.png" alt="revel" width={28} height={28} className="cursor-pointer hidden max-md:block dark:invert" loading='lazy' onClick={() => {handleDelete()}}/>
           <div className='bg-red-600 text-white text-lg font-semibold rounded-md flex justify-center items-center px-3 py-[.1rem] cursor-pointer max-md:hidden' onClick={() => {handleDelete()}}>
             Delete
           </div>

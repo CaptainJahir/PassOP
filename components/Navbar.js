@@ -47,7 +47,7 @@ const Navbar = () => {
         
         {/* this displays small screen devices */}
         <div className='hidden max-md:block' onClick={() => {moreBtn()}}>
-            <Image src={moreImg} width={24} height={24} alt="more" className='invert' />
+            <Image src={moreImg} width={24} height={24} alt="more" className='invert' loading='eager'/>
         </div>
 
         {/* Logo */}
@@ -66,7 +66,7 @@ const Navbar = () => {
             {/* Home */}
             <Link href="/">
                 <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
-                    <Image src="/assets/home.png" alt="home" height={21} width={21} className='invert'/>
+                    <Image src="/assets/home.png" alt="home" height={21} width={21} className='invert' loading='lazy'/>
                     <span>Home</span>
                 </div>
             </Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
             </Link>
 
             {/* Github Link */}
-            <Link href="https://github.com/">
+            <Link href="https://github.com/CaptainJahir/PassOP" prefetch={false}>
                 <div className="flex items-center justify-around w-28 cursor-pointer rounded-full px-2 py-1 border border-transparent hover:border-white">
                     <Image src="/assets/github.ico" width={28} height={28} alt="github link" className='dark:invert'/>
                     <span>GitHub</span>
@@ -91,7 +91,7 @@ const Navbar = () => {
 
             {/* Dark and Light Mode Button */}
             <div>
-                <Image src={Mode} height={28} width={28} alt="modes" className='invert cursor-pointer' onClick={() => {handleMode()}}/>
+                <Image src={Mode} height={28} width={28} alt="modes" className='invert cursor-pointer' loading='eager' onClick={() => {handleMode()}}/>
             </div>
 
             </div>
@@ -113,7 +113,7 @@ const Navbar = () => {
             </Link>
 
             {/* Github Link */}
-            <Link href="https://github.com/">
+            <Link href="https://github.com/CaptainJahir/PassOP" prefetch={false}>
                 <div className='pl-6 text-white font-semibold text-[1.05rem] cursor-pointer hover:bg-slate-500' onClick={() => {moreBtn();}}>
                     GitHub
                 </div>

@@ -153,7 +153,7 @@ export default function Home() {
                 <div className="w-1/2 bg-white rounded-full flex justify-between items-center pr-4 max-md:w-[90%]">
                 <input type={inptype} {...register("pass", {required:true, minLength:4})} name="pass" placeholder="Enter Password" className="h-10 text-lg px-4 rounded-full w-[90%]" />
                 {/* here goes the hide show img */}
-                  <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" onClick={() => {toggleBtn()}}/>
+                  <Image src={img} alt="revel" width={28} height={28} className="w-4 h-4 cursor-pointer" loading="eager" onClick={() => {toggleBtn()}}/>
                 </div>
               </div>
           </div>
@@ -161,7 +161,7 @@ export default function Home() {
           <button type="submit" onClick={() => {inpValidation()}} className="mt-6 w-[8rem] bg-orange-500 px-6 py-1 rounded-full mx-auto flex justify-center items-center gap-2 mb-6 dark:text-white dark:bg-amber-900">
             <span>Submit</span>
             <span>
-              <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem] dark:invert"/>
+              <Image src="/assets/save.png" height={28} width={28} alt="save" className="w-[1rem] dark:invert" loading="eager"/>
             </span>
           </button>
         </form>

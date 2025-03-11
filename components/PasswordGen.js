@@ -163,10 +163,10 @@ const PasswordGen = () => {
                 src="/assets/refresh.png"
                 height={36}
                 width={36}
-                priority={true}
                 alt="refresh"
                 className="invert cursor-pointer max-md:h-6 max-md:w-6 z-10"
                 onClick={() => generatedpass()}
+                loading="lazy"
               />
               <button
                 className="bg-yellow-400 w-[7rem] h-[2rem] rounded-sm text-gray-600 font-semibold dark:text-white max-md:hidden z-10"
@@ -176,7 +176,7 @@ const PasswordGen = () => {
               >
                 Copy
               </button>
-              <Image src="/assets/Copy.png" alt="copy" height={26} width={26} className="hidden max-md:block invert z-10" onClick={() => {copyBtn();}}/>
+              <Image src="/assets/Copy.png" alt="copy" height={26} width={26} className="hidden max-md:block invert z-10" loading="lazy" onClick={() => {copyBtn();}}/>
             </div>
           </div>
           <div className="text-gray-700 text-lg font-medium flex justify-center items-center gap-1 mt-2">
@@ -186,6 +186,7 @@ const PasswordGen = () => {
               width={20}
               alt="strength status"
               className="dark:invert"
+              loading="lazy"
             />
             <span className="dark:text-white">{passStrength}</span>
           </div>
@@ -193,13 +194,13 @@ const PasswordGen = () => {
       </div>
 
       <div className="bg-white w-[67%] mx-auto pt-5 dark:bg-gray-900 max-sm:w-[100%] md:w-[86%] lg:w-[80%] xl:w-[75%]">
-        <div className="text-lg text-gray-600 pl-[3rem] dark:text-white max-sm:text-center max-sm:pl-0 max-sm:text-base">
+        <div className="text-lg text-gray-600 pl-[3rem] dark:text-white max-sm:text-center max-sm:pl-0 max-sm:text-base max-md:text-sm max-md:text-center max-md:px-0">
           Use the slider, and select from the options, below, to lengthen your
           password and strengthen your security.
         </div>
         {/* Range input and it's value */}
         <div className="flex justify-center flex-col gap-2 bg-white dark:bg-gray-900">
-          <div className="text-gray-500 pl-[3rem] my-5 dark:text-white">
+          <div className="text-gray-500 pl-[3rem] my-5 dark:text-white max-md:text-sm">
             Password range (4-64)
           </div>
           <div className="flex flex-col justify-center items-center gap-2 w-full">
@@ -209,45 +210,45 @@ const PasswordGen = () => {
               max={64}
               value={passLen}
               onChange={(e) => setpassLen(e.target.value)}
-              className="w-[80%] h-[1px]"
+              className="w-[80%] h-[1px] dark:h-[2px]"
             />
-            <div className="text-2xl text-gray-600 font-semibold dark:text-white">
+            <div className="text-2xl text-gray-600 font-semibold dark:text-white max-md:text-lg">
               {passLen}
             </div>
           </div>
         </div>
         {/* input tags */}
-        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center dark:bg-gray-900 dark:text-white max-sm:flex-col max-sm:items-start max-sm:ml-[6rem] max-sm:text-[1rem]">
-          <div className="flex justify-center items-center gap-1">
+        <div className="bg-white py-[2rem] text-lg text-gray-700 font-medium flex justify-center gap-5 items-center dark:bg-gray-900 dark:text-white max-sm:flex-col max-sm:items-start max-sm:ml-[6rem] max-sm:text-[1rem] max-md:grid max-md:grid-cols-2 max-md:mx-6 max-md:text-sm max-md:font-medium">
+          <div className="flex justify-center items-center gap-1 max-md:justify-start">
             <input
               type="checkbox"
               name="lowercase"
               id="lowercase"
-              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer"
+              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer max-md:h-3"
               checked={lowerCheck}
               onChange={() => checkChange(lowerCheck, setlowerCheck)}
             />
             <label htmlFor="lowercase">Lower case</label>
           </div>
 
-          <div className="flex justify-center items-center gap-1">
+          <div className="flex justify-center items-center gap-1 max-md:justify-start">
             <input
               type="checkbox"
               name="uppercase"
               id="uppercase"
-              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer"
+              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer max-md:h-3"
               checked={upperCheck}
               onChange={() => checkChange(upperCheck, setupperCheck)}
             />
             <label htmlFor="uppercase">Upper case</label>
           </div>
 
-          <div className="flex justify-center items-center gap-1">
+          <div className="flex justify-center items-center gap-1 max-md:justify-start">
             <input
               type="checkbox"
               name="spChar"
               id="spChar"
-              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer"
+              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer max-md:h-3"
               checked={specialCharCheck}
               onChange={() =>
                 checkChange(specialCharCheck, setspecialCharCheck)
@@ -256,12 +257,12 @@ const PasswordGen = () => {
             <label htmlFor="spChar">Special Characters</label>
           </div>
 
-          <div className="flex justify-center items-center gap-1">
+          <div className="flex justify-center items-center gap-1 max-md:justify-start">
             <input
               type="checkbox"
               name="numbers"
               id="numbers"
-              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer"
+              className="w-4 h-4 border-2 outline-none border-gray-400 rounded-sm checked:bg-blue-500 cursor-pointer max-md:h-3"
               checked={numbCheck}
               onChange={() => checkChange(numbCheck, setNumbCheck)}
             />
