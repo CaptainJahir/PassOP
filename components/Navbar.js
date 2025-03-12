@@ -43,10 +43,10 @@ const Navbar = () => {
     
   return (
       <div>
-        <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between fixed top-0 px-10 max-md:px-6 dark:bg-[rgb(70,0,0)] z-20">
+        <div className="bg-slate-700 w-full h-[3.8rem] flex items-center justify-between fixed top-0 px-10 max-md:px-6 max-sm:px-6 dark:bg-[rgb(70,0,0)] z-20">
         
         {/* this displays small screen devices */}
-        <div className='hidden max-md:block' onClick={() => {moreBtn()}}>
+        <div className='hidden max-md:block max-sm:block' onClick={() => {moreBtn()}}>
             <Image src={moreImg} width={24} height={24} alt="more" className='invert' loading='eager'/>
         </div>
 
@@ -62,7 +62,7 @@ const Navbar = () => {
             </div>
         </Link>
         {/* this displays on large screen devices */}
-        <div className='flex items-center justify-center text-white font-semibold max-md:hidden'>
+        <div className='flex items-center justify-center text-white font-semibold max-md:hidden max-sm:hidden'>
             {/* Home */}
             <Link href="/">
                 <div className='cursor-pointer flex justify-center items-center gap-1 border w-28 py-1 rounded-full border-transparent hover:border-white'>
@@ -97,7 +97,7 @@ const Navbar = () => {
             </div>
         </div>
 
-        <div className={`hidden bg-slate-600 fixed top-[3.8rem] w-full z-20 pb-2 max-md:${showMore}`}>
+        <div className={`hidden bg-slate-600 fixed top-[3.8rem] w-full z-20 pb-2 max-md:${showMore} max-sm:${showMore}`}>
              {/* Home */}
              <Link href="/">
                 <div className='pl-6 text-white font-semibold text-[1.05rem] cursor-pointer hover:bg-slate-500' onClick={() => {moreBtn();}}>

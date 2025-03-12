@@ -38,10 +38,10 @@ const Feedback = () => {
     };
     
   return (
-    <div className="max-md:hidden">
+    <div className="max-md:hidden max-sm:hidden">
         <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} closeOnClick draggable theme="colored"/>
         {/* feedback button */}
-        <div className={`fixed right-[-2.2rem] top-[50%] w-[6rem] h-[1.5rem] rotate-[270deg] bg-gray-800 text-white font-medium rounded-t-md text-center cursor-pointer ${feedbackBtn}`} onClick={() => {handleFeedbackBtn()}}>
+        <div className={`fixed right-[-2.2rem] top-[50%] w-[6rem] h-[1.5rem] rotate-[270deg] bg-gray-800 text-white font-medium rounded-t-md text-center cursor-pointer ${feedbackBtn} max-sm:hidden max-md:hidden`} onClick={() => {handleFeedbackBtn()}}>
             Feedback
         </div>
 

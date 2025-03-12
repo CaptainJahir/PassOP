@@ -1,2 +1,1 @@
-image priority
-link load 
+navbar hamburger not working
