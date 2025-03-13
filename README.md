@@ -1,36 +1,109 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PassOP - Password Manager
 
-## Getting Started
+PassOP is a modern and secure password manager built using Next.js, React, Redux, Express.js, and MongoDB. It allows users to generate strong passwords, store and manage credentials, and submit feedback.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+✅ **Password Generator** - Generate secure passwords with customizable character sets.\
+✅ **Credential Storage** - Securely store, edit, and delete saved credentials.\
+✅ **Dark Mode Support** - Toggle between light and dark themes.\
+✅ **Feedback Form** - Users can submit feedback via a dynamic form.\
+✅ **Responsive Design** - Fully responsive UI optimized for various screen sizes.\
+✅ **State Management** - Utilizes Redux Toolkit for efficient global state management.\
+✅ **Toasts & Notifications** - Uses react-toastify for instant user feedback.\
+✅ **Secure API** - RESTful backend powered by Express.js and MongoDB.
+
+## Tech Stack
+
+### **Frontend:**
+
+- Next.js 15.1.6
+- React 19.0.0
+- Redux Toolkit 2.5.1
+- Tailwind CSS 3.4.1
+- React Hook Form 7.54.2
+- React Toastify 11.0.3
+
+### **Backend:**
+
+- Node.js & Express.js
+- MongoDB & Mongoose
+- CORS & dotenv
+
+## Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+```sh
+git clone https://github.com/yourusername/PassOP.git
+cd PassOP
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2️⃣ Install Dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+#### Frontend
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```sh
+cd PassOP
+npm install
+```
 
-## Learn More
+#### Backend
 
-To learn more about Next.js, take a look at the following resources:
+```sh
+cd backend
+npm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3️⃣ Configure Environment Variables
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Create a `.env` file in the backend folder and add the following:
 
-## Deploy on Vercel
+```
+MONGO_URI=your_mongodb_connection_string
+PORT=3001
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 4️⃣ Run the Application
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Start the Backend Server
+
+```sh
+cd backend
+npm start
+```
+
+#### Start the Frontend
+
+```sh
+cd frontend
+npm run dev
+```
+
+## Project Structure
+
+```
+PassOP/
+ ├── frontend/
+ │   ├── app/ (Next.js pages)
+ │   ├── components/ (Reusable components)
+ │   ├── redux/ (Redux store & slices)
+ │   ├── public/ (Static assets)
+ │   ├── package.json
+ │   └── next.config.mjs
+ │
+ ├── backend/
+ │   ├── models/ (Mongoose models)
+ │   ├── index.js (Main server file)
+ │   ├── package.json
+ │   ├── .env (Environment variables)
+```
+
+## Future Enhancements
+
+🚀 Implement user authentication (JWT-based login system).\
+🚀 Add password encryption for stored credentials.\
+🚀 Improve UI with animations and better accessibility.\
+🚀 Implement deployment with Docker & CI/CD pipelines.
+
+✨ **Developed by Captain Jahir** ✨
